@@ -41,3 +41,31 @@ ServicePointManager.Expect100Continue = true;
                     var h = JObject.Parse(rds.ReadToEnd());
                 }
             }
+//using (var client = new HttpClient())
+            //{
+            //    ServicePointManager.Expect100Continue = true;
+            //    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            //    client.BaseAddress = new Uri(tokenURL);
+            //    client.DefaultRequestHeaders.Accept.Clear();
+            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            //   // var credential = "{ username = MaxBupa, password = M@xBup@, scope = updatepolicyno }";
+
+            //    var credenObj = new { username = strUsername, password = strPassword, scope = strScope };
+
+            //    var json = JsonConvert.SerializeObject(credenObj);
+            //    var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            //    var response = client.PostAsync(tokenURL, data);
+            //    //response.Wait();
+            //    var readTask4 = response.Result.Content.ReadAsStringAsync();
+            //    if (response.Result.IsSuccessStatusCode)
+            //    {
+            //        var readTask = response.Result.Content.ReadAsStringAsync();
+            //        readTask.Wait();
+            //        string resultStr = readTask.Result;
+
+
+            //    }
+            //    }
