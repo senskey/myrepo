@@ -1,0 +1,43 @@
+ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                   | SecurityProtocolType.Tls11
+                   | SecurityProtocolType.Tls12
+                   | SecurityProtocolType.Ssl3;
+
+            //HttpWebRequest requests = WebRequest.Create("https://test.njinsure.in/ciadesk/api/getAuthenticationToken") as HttpWebRequest;
+            //var inputJSONs = new { username = "MaxBupa", password = "M@xBup@", scope = "updatepolicyno" };
+            //string outputs = JsonConvert.SerializeObject(inputJSONs);
+            //ASCIIEncoding encoders = new ASCIIEncoding();
+            //byte[] datas = encoders.GetBytes(outputs);
+            //requests.Method = "POST";
+            //requests.ContentType = "application/json";
+            //requests.ContentLength = datas.Length;
+            //requests.Expect = "application/json";
+            //requests.GetRequestStream().Write(datas, 0, datas.Length);
+
+            //using (WebResponse responses = requests.GetResponse())
+            //{
+            //    using (StreamReader rds = new StreamReader(responses.GetResponseStream()))
+            //    {
+            //        var h = JObject.Parse(rds.ReadToEnd());
+            //    }
+            //}
+
+            HttpWebRequest requests = WebRequest.Create("https://test.njinsure.in/ciadesk/api/V1/updatePolicyOfTransaction") as HttpWebRequest;
+            var inputJSONs = new { ccode = "M0003", proposalNo = "812000010987", policyNo = "222222" };
+            string outputs = JsonConvert.SerializeObject(inputJSONs);
+            ASCIIEncoding encoders = new ASCIIEncoding();
+            byte[] datas = encoders.GetBytes(outputs);
+            requests.Method = "POST";
+            requests.ContentType = "application/json";
+            requests.ContentLength = datas.Length;
+            requests.Expect = "application/json";
+            requests.GetRequestStream().Write(datas, 0, datas.Length);
+
+            using (WebResponse responses = requests.GetResponse())
+            {
+                using (StreamReader rds = new StreamReader(responses.GetResponseStream()))
+                {
+                    var h = JObject.Parse(rds.ReadToEnd());
+                }
+            }
